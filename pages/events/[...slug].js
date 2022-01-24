@@ -2,18 +2,10 @@ import Head from "next/head";
 import Button from "../../components/ui/button";
 import { getFilteredEvents } from "../../helpers/apiUtil";
 import EventList from "../../components/events/EventList";
-import ResultsTitle from "../../components/resultsTitle/resultsTitle";
 import ErrorAlert from "../../components/errorAlert/errorAlert";
+import ResultsTitle from "../../components/resultsTitle/resultsTitle";
 
 function filteredEventPage({ hasError, filterEvents, date }) {
-  // const router = useRouter();
-  // const filterData = router.query.slug;
-  // if (!filterData) {
-  //   return <p className="center">Loading...</p>;
-  // }
-  // const filterYear = +filterData[0];
-  // const filterMonth = +filterData[1];
-
   if (hasError) {
     return (
       <div className="center">
@@ -54,7 +46,6 @@ function filteredEventPage({ hasError, filterEvents, date }) {
 }
 export async function getServerSideProps(context) {
   const { params } = context;
-  console.log("context", context);
   const filterData = params.slug;
 
   const filterYear = +filterData[0];
@@ -69,10 +60,6 @@ export async function getServerSideProps(context) {
   ) {
     return {
       props: { hasError: true },
-      // notFound: true,
-      // redirect: {
-      //   destination: "/error",
-      // },
     };
   }
   const filterEvents = await getFilteredEvents({

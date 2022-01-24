@@ -12,10 +12,32 @@ function handler(req, res) {
     ) {
       res.status(422).json({ message: "Invalid Input !" });
     }
+    console.log("user name", name);
     console.log("user email", email);
-    res.status(201).json({ message: "Signed Up!" });
+    console.log("user text", text);
+    const newComment = {
+      id: new Date().toString(),
+      email,
+      name,
+      text,
+    };
+    res.status(201).json({ message: "Added Comment!", newComment });
   }
   if (req.method === "GET") {
+    const dummyComment = [
+      {
+        id: "cs324",
+        name: "Max",
+        text: "Firsts Comment",
+      },
+      {
+        id: "cs325",
+        name: "Maxii",
+        text: "Second Comment",
+      },
+    ];
+    console.log("GEt chala ", dummyComment);
+    res.send({ comments: dummyComment });
   }
 }
 
