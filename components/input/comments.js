@@ -10,17 +10,15 @@ function Comments(props) {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
   useEffect(() => {
-    if (showComments) {
-      fetch("/api/comments/" + eventId)
-        .then((res) => {
-          // res.json();
-          console.log("items", res);
-        })
-        .then((DATA) => {
-          console.log("DATA", DATA);
-        });
-      // setComments(res?.json()?.comments);
-    }
+    const fetchComments = async () => {
+      if (showComments) {
+        let res = await fetch("/api/comments/" + eventId);
+        // res.json();
+        let comments = await res.json();
+        setComments(comments?.comments);
+      }
+    };
+    fetchComments();
   }, [showComments]);
 
   function toggleCommentsHandler() {
