@@ -1,10 +1,15 @@
-import { MongoClient } from "mongodb";
+import { connectToDb, getAllDocs, insertDoc } from "../../../helpers/dbUtil";
 
 async function handler(req, res) {
   let { eventId } = req.query;
-  const client = await MongoClient.connect(
-    "mongodb+srv://admin:admin123@cluster0.u9jej.mongodb.net/events?retryWrites=true&w=majority"
-  );
+  let client;
+  try {
+    client = await connectToDb();
+  } catch (err) {
+    res.status(500).json({ message: "Connecting to db failed" });
+    return;
+  }
+
   const db = client.db();
   if (req.method === "POST") {
     const { email, name, text } = req.body;
@@ -26,29 +31,20 @@ async function handler(req, res) {
       text,
     };
 
-    const res = await db.collection("comments").insertOne(newComment);
+    const res = await insertDoc(client, "comments", newComment);
     console.log("insert cmt res", res);
     res.status(422).json({ message: "Invalid Input !" });
     client.res.status(201).json({ message: "Added Comment!", newComment });
   }
   if (req.method === "GET") {
-    const dummyComment = [
-      {
-        id: "cs324",
-        name: "Max",
-        text: "Firsts Comment",
-      },
-      {
-        id: "cs325",
-        name: "Maxii",
-        text: "Second Comment",
-      },
-    ];
-    const documents = await db.collection("comments").find().sort().toArray();
-    console.log("GEt chala ", dummyComment);
-    res.send({ comments: dummyComment });
+    try {
+      const documents = await getAllDocs(client, "comments", { _id: -1 });
+      res.send({ comments: documents });
+    } catch (err) {
+      console.log("GEt chala ", documents);
+      client.close();
+    }
   }
-  client.close();
 }
 
 export default handler;
