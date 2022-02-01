@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
 import classes from "./new-comment.module.css";
 
-function NewComment(props) {
+function NewComment({ onAddComment }) {
   const [isInvalid, setIsInvalid] = useState(false);
 
   const emailInputRef = useRef();
   const nameInputRef = useRef();
   const commentInputRef = useRef();
+  const formRef = useRef();
 
-  function sendCommentHandler(event) {
+  async function sendCommentHandler(event) {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
@@ -28,15 +29,20 @@ function NewComment(props) {
       return;
     }
 
-    props.onAddComment({
+    await onAddComment({
       email: enteredEmail,
       name: enteredName,
       text: enteredComment,
     });
+    document.getElementById("comments-form").reset();
   }
 
   return (
-    <form className={classes.form} onSubmit={sendCommentHandler}>
+    <form
+      className={classes.form}
+      onSubmit={sendCommentHandler}
+      id={"comments-form"}
+    >
       <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="email">Your email</label>

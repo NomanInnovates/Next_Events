@@ -20,28 +20,31 @@ async function handler(req, res) {
       !text ||
       text.trim() === ""
     ) {
+      res.status(422).json({ message: "Invalid Input !" });
     }
-    console.log("user name", name);
-    console.log("user email", email);
-    console.log("user text", text);
+
     const newComment = {
       eventId,
       email,
       name,
       text,
     };
-
-    const res = await insertDoc(client, "comments", newComment);
-    console.log("insert cmt res", res);
-    res.status(422).json({ message: "Invalid Input !" });
-    client.res.status(201).json({ message: "Added Comment!", newComment });
+    try {
+      const result = await insertDoc(client, "comments", newComment);
+      console.log("insert cmt res", result);
+      res.status(201).json({ message: "Added Comment!", newComment });
+    } catch (err) {
+      res.status(500).json({ message: "server exception", Error: err });
+    }
   }
   if (req.method === "GET") {
+    console.log("if GEt chala ");
+
     try {
       const documents = await getAllDocs(client, "comments", { _id: -1 });
-      res.send({ comments: documents });
+      res.status(200).json({ comments: documents });
     } catch (err) {
-      console.log("GEt chala ", documents);
+      console.log("GEt chala ", err);
       client.close();
     }
   }

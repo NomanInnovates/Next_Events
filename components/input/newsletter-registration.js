@@ -16,6 +16,7 @@ function NewsletterRegistration() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+    document.getElementById("newsletter-form").reset();
     // fetch user input (state or refs)
     // optional: validate input
     // send valid data to API
@@ -24,7 +25,7 @@ function NewsletterRegistration() {
   return (
     <section className={classes.newsletter}>
       <h2>Sign up to stay updated!</h2>
-      <form onSubmit={registrationHandler}>
+      <form onSubmit={registrationHandler} id="newsletter-form">
         <div className={classes.control}>
           <input
             type="email"

@@ -4,17 +4,18 @@ import CommentList from "./comment-list";
 import NewComment from "./new-comment";
 import classes from "./comments.module.css";
 
-function Comments(props) {
-  const { eventId } = props;
-
+function Comments({ eventId }) {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
+  console.log("commt state", comments);
+
   useEffect(() => {
     const fetchComments = async () => {
       if (showComments) {
         let res = await fetch("/api/comments/" + eventId);
         // res.json();
         let comments = await res.json();
+        console.log("commt", await comments);
         setComments(comments?.comments);
       }
     };
@@ -33,7 +34,7 @@ function Comments(props) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => console.log("comment res", res.json()));
+    }).then((res) => res.json());
   }
 
   return (
