@@ -31,20 +31,16 @@ async function handler(req, res) {
     };
     try {
       const result = await insertDoc(client, "comments", newComment);
-      console.log("insert cmt res", result);
       res.status(201).json({ message: "Added Comment!", newComment });
     } catch (err) {
       res.status(500).json({ message: "server exception", Error: err });
     }
   }
   if (req.method === "GET") {
-    console.log("if GEt chala ");
-
     try {
       const documents = await getAllDocs(client, "comments", { _id: -1 });
       res.status(200).json({ comments: documents });
     } catch (err) {
-      console.log("GEt chala ", err);
       client.close();
     }
   }

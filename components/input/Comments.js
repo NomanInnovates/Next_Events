@@ -8,8 +8,6 @@ function Comments({ eventId }) {
   const notificationCtx = useContext(NotificationContext);
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
-  console.log("commt state", comments);
-
   useEffect(() => {
     const fetchComments = async () => {
       try {
