@@ -1,5 +1,5 @@
 import Link from "next/link";
-import classes from "./button.module.css";
+import classes from "./Button.module.css";
 
 function Button({ link, children, onClick }) {
   if (link) {

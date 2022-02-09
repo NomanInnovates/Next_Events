@@ -1,6 +1,6 @@
-import Button from "../ui/button";
+import Button from "../ui/Button";
 import DateIcon from "../icon/dateIcon";
-import classes from "./eventItem.module.css";
+import classes from "./EventItem.module.css";
 import AddressIcon from "../icon/addressIcon";
 import ArrowRightIcon from "../icon/arrowRightIcon";
 

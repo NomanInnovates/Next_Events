@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { getFeaturedEvents } from "../helpers/apiUtil";
 import EventList from "../components/events/EventList";
-import NewsLeterRegistration from "../components/input/newsletter-registration";
+import NewsLeterRegistration from "../components/input/NewsletterRegistration";
 
 function HomePage({ featuredEvents }) {
   return (

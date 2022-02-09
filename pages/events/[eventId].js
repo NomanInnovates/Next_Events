@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { getEventById, getFeaturedEvents } from "../../helpers/apiUtil";
+import Comments from "../../components/input/Comments";
 import EventContent from "../../components/eventDetail/EventContent";
 import EventSummary from "../../components/eventDetail/EventSummary";
+import { getEventById, getFeaturedEvents } from "../../helpers/apiUtil";
 import EventLogistics from "../../components/eventDetail/EventLogistics";
-import Comments from "../../components/input/comments";
 
 function eventDetailPage({ event }) {
   if (!event) {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import classes from "./mainHeader.module.css";
+import classes from "./MainHeader.module.css";
 
 function MainHeader() {
   return (

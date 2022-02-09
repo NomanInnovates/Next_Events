@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Button from "../../components/ui/button";
+import Button from "../../components/ui/Button";
 import { getFilteredEvents } from "../../helpers/apiUtil";
 import EventList from "../../components/events/EventList";
 import ErrorAlert from "../../components/errorAlert/errorAlert";
-import ResultsTitle from "../../components/resultsTitle/resultsTitle";
+import ResultsTitle from "../../components/resultsTitle/ResultsTitle";
 
 function filteredEventPage({ hasError, filterEvents, date }) {
   if (hasError) {

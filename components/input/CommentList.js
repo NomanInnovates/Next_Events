@@ -1,4 +1,4 @@
-import classes from "./comment-list.module.css";
+import classes from "./CommentList.module.css";
 
 function CommentList({ items }) {
   return (

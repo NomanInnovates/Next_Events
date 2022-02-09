@@ -1,6 +1,6 @@
 import { useRef, useContext } from "react";
-import classes from "./newsletter-registration.module.css";
-import NotificationContext from "../../store/notificationContext";
+import classes from "./NewsletterRegistration.module.css";
+import NotificationContext from "../../store/NotificationContext";
 
 function NewsletterRegistration() {
   const notificationCtx = useContext(NotificationContext);

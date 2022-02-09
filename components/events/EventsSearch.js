@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import Button from "../ui/button";
-import classes from "./events-search.module.css";
+import Button from "../ui/Button";
+import classes from "./EventsSearch.module.css";
 
 function EventsSearch(props) {
   const yearInputRef = useRef();

@@ -1,10 +1,11 @@
 import DateIcon from "../icon/dateIcon";
 import LogisticsItem from "./LogisticsItem";
 import AddressIcon from "../icon/addressIcon";
-import classes from "./event-logistics.module.css";
+import classes from "./EventLogistic.module.css";
 
 function EventLogistics(props) {
   const { date, address, image, imageAlt } = props;
+  console.log("classes", classes);
 
   const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",

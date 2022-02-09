@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import MainHeader from "./mainHeader";
-import Notification from "../notification/notification";
-import NotificationContext from "../../store/notificationContext";
+import MainHeader from "./MainHeader";
+import Notification from "../notification/Notification";
+import NotificationContext from "../../store/NotificationContext";
 
 function Layout(props) {
   const notificationCtx = useContext(NotificationContext);
