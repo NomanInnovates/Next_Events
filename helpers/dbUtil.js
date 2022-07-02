@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-
+// backend
 export async function connectToDb() {
   const client = await MongoClient.connect(
     "mongodb+srv://admin:admin123@cluster0.u9jej.mongodb.net/events?retryWrites=true&w=majority"
