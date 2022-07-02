@@ -3,6 +3,7 @@ import "../styles/Globals.css";
 import Layout from "../components/layout/Layout";
 
 import { NotificationContextProvider } from "../store/NotificationContext";
+
 function MyApp({ Component, pageProps }) {
   return (
     <NotificationContextProvider>

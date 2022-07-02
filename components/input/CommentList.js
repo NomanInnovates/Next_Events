@@ -4,11 +4,11 @@ function CommentList({ items }) {
   return (
     <ul className={classes.comments}>
       {/* Render list of comments - fetched from API */}
-      {items?.map((item) => (
-        <li key={item._id}>
-          <p>{item.text}</p>
+      {items?.map((comment) => (
+        <li key={comment._id}>
+          <p>{comment.text}</p>
           <div>
-            By <address>{item.name}</address>
+            By <address>{comment.name}</address>
           </div>
         </li>
       ))}
